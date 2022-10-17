@@ -7,12 +7,14 @@ node{
     stage('Build'){
         sh "${mavenHome}/bin/mvn clean package"
     }
+    /*
     stage('DeployApplicationIntoTomcat')
     {
      sshagent(['slave-credentials']) {
     sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Pipelinejob/target/sparkjava-hello-world-1.0.war ubuntu@3.109.139.246:/opt/tomcat9/webapps/"
 }   
     }
+    */
     stage('Send Email Notification')
     {
         emailext body: 'Build is successful', subject: 'Build Is Over...!!', to: 'ravi@gmail.com'
